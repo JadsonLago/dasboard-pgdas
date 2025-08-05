@@ -132,6 +132,9 @@ const extractDataFromPdfText = (text) => {
     const receitaBrutaAnoMatch = text.match(receitaBrutaAnoRegex);
     if (receitaBrutaAnoMatch) data.receitaBrutaAno = parseFloat(receitaBrutaAnoMatch[1].replace(/\./g, '').replace(',', '.'));
 
+    const receitasMercadoInterno = {};
+    const receitasMercadoExterno = {};
+
     // Captura o texto entre "2.2) Receitas Brutas Anteriores (R$)" e "2.3) Folha de Salários Anteriores (R$)"
     const fullRevenuesBlockRegex = /2\.2\)\s*Receitas Brutas Anteriores \(R\$\)([\s\S]*?)2\.3\)\s*Folha de Salários Anteriores/;
     const fullRevenuesBlockMatch = text.match(fullRevenuesBlockRegex);
@@ -240,16 +243,34 @@ app.get('/data/:id', async (req, res) => {
     }
 });
 
-// Adicione este endpoint em backend-mysql/server.js, antes do app.listen
+// Endpoint para buscar declarações por CNPJ
+app.get('/documents/by-cnpj/:cnpj', async (req, res) => {
+    const { cnpj } = req.params;
+    try {
+        // Busca todas as declarações para o CNPJ fornecido, ordenadas por período de apuração
+        const [rows] = await pool.query(
+            'SELECT id, cnpj, nomeEmpresarial, periodoApuracao, createdAt FROM pgdas_reports WHERE cnpj = ? ORDER BY periodoApuracao DESC',
+            [cnpj]
+        );
+        res.json({ success: true, documents: rows });
+    } catch (error) {
+        console.error(`Erro ao buscar declarações para CNPJ ${cnpj}:`, error);
+        res.status(500).json({ success: false, message: 'Erro ao buscar declarações por CNPJ.' });
+    }
+});
+
+// Endpoint para buscar todos os documentos (para a listagem agrupada)
+// Este endpoint foi adicionado na conversa anterior, mas não estava no código completo da última vez.
 app.get('/documents', async (req, res) => {
     try {
-        const [rows] = await pool.query('SELECT id, cnpj, nomeEmpresarial, periodoApuracao FROM pgdas_reports ORDER BY createdAt DESC');
+        const [rows] = await pool.query('SELECT id, cnpj, nomeEmpresarial, periodoApuracao, createdAt FROM pgdas_reports ORDER BY createdAt DESC');
         res.json({ success: true, documents: rows });
     } catch (error) {
         console.error('Erro ao buscar lista de documentos:', error);
         res.status(500).json({ success: false, message: 'Erro ao buscar lista de documentos.' });
     }
 });
+
 
 app.listen(port, () => {
     console.log(`Servidor backend rodando em http://localhost:${port}`);
