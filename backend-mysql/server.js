@@ -5,9 +5,10 @@ const cors = require('cors');
 const multer = require('multer');
 const path = require('path');
 
-// Importar módulos das novas camadas
+// Importar módulos das camadas
 const { pool, createTables } = require('./config/db');
-const { extractDataFromPdfText } = require('./utils/pdfParser');
+// CORREÇÃO: Importa o módulo utilitário inteiro, que contém a nova função.
+const pdfParserUtil = require('./utils/pdfParser');
 const PgdasReportDAO = require('./dao/PgdasReportDAO');
 const PgdasReportService = require('./services/PgdasReportService');
 
@@ -16,12 +17,13 @@ const port = 3001;
 
 // Inicializar DAO e Service
 const pgdasReportDAO = new PgdasReportDAO(pool);
-const pgdasReportService = new PgdasReportService(pgdasReportDAO, { extractDataFromPdfText }); // Passa a função extractDataFromPdfText
+// CORREÇÃO: Passa o módulo 'pdfParserUtil' inteiro para o serviço.
+const pgdasReportService = new PgdasReportService(pgdasReportDAO, pdfParserUtil);
 
 // Inicializar banco de dados e criar tabelas
 createTables().catch(err => {
     console.error('Falha ao iniciar o banco de dados:', err);
-    process.exit(1); // Encerra a aplicação se o banco de dados não puder ser inicializado
+    process.exit(1);
 });
 
 app.use(cors());
@@ -44,7 +46,7 @@ app.post('/upload', upload.single('document'), async (req, res) => {
         if (result.success) {
             res.json(result);
         } else {
-            res.status(409).json(result); // 409 Conflict para documentos duplicados
+            res.status(409).json(result);
         }
     } catch (error) {
         console.error('Erro no upload e processamento:', error);
@@ -64,7 +66,7 @@ app.get('/data/:id', async (req, res) => {
     }
 });
 
-// Endpoint para buscar todas as declarações (para a listagem agrupada)
+// Endpoint para buscar todas as declarações
 app.get('/documents', async (req, res) => {
     try {
         const documents = await pgdasReportService.getAllReports();

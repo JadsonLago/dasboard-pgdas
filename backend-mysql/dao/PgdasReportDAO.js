@@ -10,19 +10,37 @@ class PgdasReportDAO {
             'SELECT id FROM pgdas_reports WHERE cnpj = ? AND periodoApuracao = ?',
             [cnpj, periodoApuracao]
         );
-        return rows[0]; // Retorna o primeiro registro encontrado ou undefined
+        return rows[0];
     }
 
     async create(reportData) {
-        const sql = `INSERT INTO pgdas_reports (cnpj, nomeEmpresarial, periodoApuracao, receitaBrutaAcumulada, receitaBrutaAno, receitasMercadoInterno, receitasMercadoExterno) VALUES (?, ?, ?, ?, ?, ?, ?)`;
+        // SQL ATUALIZADO: Adicionados os novos campos no INSERT.
+        const sql = `
+            INSERT INTO pgdas_reports (
+                cnpj, nomeEmpresarial, periodoApuracao, receitaBrutaAcumulada, 
+                receitaBrutaAno, receitasMercadoInterno, receitasMercadoExterno,
+                valor_total_debito, irpj, csll, cofins, pis_pasep, inss_cpp, icms, ipi, iss
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        `;
+        
+        // Garante que valores numéricos nulos ou indefinidos sejam salvos como 0.
         const values = [
             reportData.cnpj,
             reportData.nomeEmpresarial,
             reportData.periodoApuracao,
-            reportData.receitaBrutaAcumulada,
-            reportData.receitaBrutaAno,
-            JSON.stringify(reportData.receitasMercadoInterno),
-            JSON.stringify(reportData.receitasMercadoExterno)
+            reportData.receitaBrutaAcumulada ?? 0,
+            reportData.receitaBrutaAno ?? 0,
+            JSON.stringify(reportData.receitasMercadoInterno || {}),
+            JSON.stringify(reportData.receitasMercadoExterno || {}),
+            reportData.valor_total_debito ?? 0,
+            reportData.irpj ?? 0,
+            reportData.csll ?? 0,
+            reportData.cofins ?? 0,
+            reportData.pis_pasep ?? 0,
+            reportData.inss_cpp ?? 0,
+            reportData.icms ?? 0,
+            reportData.ipi ?? 0,
+            reportData.iss ?? 0
         ];
         const [result] = await this.pool.query(sql, values);
         return result.insertId;
@@ -31,7 +49,7 @@ class PgdasReportDAO {
     async findById(id) {
         const [rows] = await this.pool.query('SELECT * FROM pgdas_reports WHERE id = ?', [id]);
         if (rows.length > 0) {
-            return rows[0]; // O driver já converte JSON para objeto
+            return rows[0];
         }
         return null;
     }

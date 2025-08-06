@@ -1,0 +1,112 @@
+Desejo armazenar todas as informações do relatório. Note que o relatório é composto por blocos.
+Cada bloco, pode conter sub-blocos que terá, ou não, mais informações a serem armazenada.
+Já conseguimos algumas informações do bloco 1 e todas as informações do bloco 2.2.
+Precisamos das demais informações, contudo, nem todas informações estarão disponíveis no mesmo relatório, mas consigo disponibilizar de empresas que possuam as informações.
+Não precisa fazer tudo de uma vez, podemos ir avançando e testando bloco a bloco. Me avisa se conseguiu entender até aqui.
+
+
+1. Identificação do Contribuinte
+CNPJ Matriz: 21.160.061/0001-96 Ok
+Nome empresarial: SAO PAULO COMERCIO VAREJISTA DE ALIMENTOS LTDA.
+Data de abertura no CNPJ: 02/10/2014
+Optante pelo Simples Nacional: Sim
+Regime de Apuração: Competência
+Nº da Declaração: 21160061202507001
+
+1.1 CNPJ das filiais presentes nesta declaração:
+Nenhuma
+
+2.Apuração do Simples Nacional
+
+2.1 Discriminativo de Receitas
+Total de Receitas Brutas (R$) Mercado Interno Mercado Externo Total
+Receita Bruta do PA (RPA) - Competência 16.988,77 0,00 16.988,77
+Receita bruta acumulada nos doze meses anteriores
+ao PA (RBT12) 179.553,14 0,00 179.553,14
+Receita bruta acumulada nos doze meses anteriores
+ao PA proporcionalizada (RBT12p)
+Receita bruta acumulada no ano-calendário corrente
+(RBA) 104.778,34 0,00 104.778,34
+Receita bruta acumulada no ano-calendário anterior
+(RBAA) 179.361,62 0,00 179.361,62
+Limite de receita bruta proporcionalizado 4.800.000,00 4.800.000,00
+
+2.2) Receitas Brutas Anteriores (R$)
+2.2.1) Mercado Interno
+01/2024 17.189,90 02/2024 12.055,51 03/2024 14.729,73 04/2024 17.776,98
+05/2024 10.791,27 06/2024 15.054,66 07/2024 16.092,05 08/2024 12.858,96
+09/2024 18.077,19 10/2024 15.584,48 11/2024 16.675,73 12/2024 12.475,16
+01/2025 11.127,01 02/2025 14.261,89 03/2025 14.216,04 04/2025 17.496,51
+05/2025 13.038,58 06/2025 17.649,54
+2.2.2) Mercado Externo
+01/2024 0,00 02/2024 0,00 03/2024 0,00 04/2024 0,00
+05/2024 0,00 06/2024 0,00 07/2024 0,00 08/2024 0,00
+09/2024 0,00 10/2024 0,00 11/2024 0,00 12/2024 0,00
+01/2025 0,00 02/2025 0,00 03/2025 0,00 04/2025 0,00
+05/2025 0,00 06/2025 0,00
+
+2.3) Folha de Salários Anteriores (R$)
+Nenhuma
+
+2.4) Fator r
+Fator r = Não se aplica
+
+2.5) Valores Fixos
+Não se aplica
+Número da Declaração: 21160061202507001 Número do Recibo: 01.07.25214.0037741-1
+Autenticação: 21051.16863.00364.61101 Página 1
+
+2.6) Resumo da Declaração
+Receita Bruta Auferida (regime competência) Valor Total do Débito Declarado (R$)
+16.988,77 675,65
+
+2.7) Informações da Declaração por Estabelecimento
+CNPJ Estabelecimento: 21.160.061/0001-96
+Município: SALVADOR UF: BA
+Sublimite de Receita Anual (R$): 3.600.000,00 Impedido de recolher ICMS/ISS no DAS: Não
+Valor do Débito por Tributo para a Atividade (R$):
+Revenda de mercadorias, exceto para o exterior - Sem substituição tributária/tributação
+monofásica/antecipação com encerramento de tributação (o substituto tributário do ICMS
+deve utilizar essa opção)
+Receita Bruta Informada: R$ 16.358,77
+IRPJ CSLL COFINS PIS/Pasep INSS/CPP ICMS IPI ISS Total
+35,99 22,90 83,36 18,06 271,56 222,48 0,00 0,00 654,35
+Parcela 1: R$ 16.358,77
+Valor do Débito por Tributo para a Atividade (R$):
+Revenda de mercadorias, exceto para o exterior - Com substituição tributária/tributação
+monofásica/antecipação com encerramento de tributação (o substituído tributário do ICMS
+deve utilizar essa opção)
+Receita Bruta Informada: R$ 630,00
+IRPJ CSLL COFINS PIS/Pasep INSS/CPP ICMS IPI ISS Total
+1,39 0,88 0,00 0,00 10,46 8,57 0,00 0,00 21,30
+Parcela 1: R$ 630,00
+Tributação monofásica de: COFINS, PIS.
+Totais do Estabelecimento
+Valor Informado: 16.988,77
+Total do Débito Declarado (exigível + suspenso)
+IRPJ CSLL COFINS PIS/Pasep INSS/CPP ICMS IPI ISS Total
+37,38 23,78 83,36 18,06 282,02 231,05 0,00 0,00 675,65
+Total do Débito com Exigibilidade Suspensa (R$)
+IRPJ CSLL COFINS PIS/Pasep INSS/CPP ICMS IPI ISS Total
+0,00 0,00 0,00 0,00 0,00 0,00 0,00 0,00 0,00
+Total do Débito Exigível (R$)
+IRPJ CSLL COFINS PIS/Pasep INSS/CPP ICMS IPI ISS Total
+37,38 23,78 83,36 18,06 282,02 231,05 0,00 0,00 675,65
+
+2.8) Total Geral da Empresa
+Total do Débito Declarado (exigível + suspenso) (R$)
+IRPJ CSLL COFINS PIS/Pasep INSS/CPP ICMS IPI ISS Total
+37,38 23,78 83,36 18,06 282,02 231,05 0,00 0,00 675,65
+Número da Declaração: 21160061202507001 Número do Recibo: 01.07.25214.0037741-1
+Autenticação: 21051.16863.00364.61101 Página 2
+Total do Débito com Exigibilidade Suspensa (R$)
+IRPJ CSLL COFINS PIS/Pasep INSS/CPP ICMS IPI ISS Total
+0,00 0,00 0,00 0,00 0,00 0,00 0,00 0,00 0,00
+Total do Débito Exigível (R$)
+IRPJ CSLL COFINS PIS/Pasep INSS/CPP ICMS IPI ISS Total
+37,38 23,78 83,36 18,06 282,02 231,05 0,00 0,00 675,65
+.
+3. Informações da Recepção da Declaração
+Data e horário da transmissão da Declaração: 02/08/2025 23:47:43
+Número do Recibo: 01.07.25214.0037741-1
+Autenticação: 21051.16863.00364.61101

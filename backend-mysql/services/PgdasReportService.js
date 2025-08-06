@@ -1,7 +1,5 @@
 // backend-mysql/services/PgdasReportService.js
 
-const pdfParse = require('pdf-parse'); // Para ler o buffer do PDF
-
 class PgdasReportService {
     constructor(pgdasReportDAO, pdfParserUtil) {
         this.pgdasReportDAO = pgdasReportDAO;
@@ -10,12 +8,11 @@ class PgdasReportService {
 
     async processAndSaveReport(filePath) {
         try {
-            const dataBuffer = require('fs').readFileSync(filePath);
-            const pdfData = await pdfParse(dataBuffer);
-            const extractedData = this.pdfParserUtil.extractDataFromPdfText(pdfData.text);
+            // Chama a função 'extractDataFromPdfFile' que lê o arquivo e extrai todos os dados.
+            const extractedData = await this.pdfParserUtil.extractDataFromPdfFile(filePath);
 
-            if (!extractedData.cnpj || !extractedData.periodoApuracao) {
-                throw new Error('CNPJ ou Período de Apuração não puderam ser extraídos do PDF.');
+            if (!extractedData || !extractedData.cnpj || !extractedData.periodoApuracao) {
+                throw new Error('CNPJ ou Período de Apuração não puderam ser extraídos do PDF. O arquivo pode ser inválido ou de um tipo não suportado.');
             }
 
             // Verifica se o documento já existe
@@ -28,7 +25,8 @@ class PgdasReportService {
             return { success: true, recordId };
 
         } finally {
-            require('fs').unlinkSync(filePath); // Garante que o arquivo temporário seja removido
+            // Garante que o arquivo temporário seja removido, mesmo se ocorrer um erro.
+            require('fs').unlinkSync(filePath); 
         }
     }
 

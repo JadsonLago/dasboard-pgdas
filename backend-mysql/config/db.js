@@ -15,6 +15,7 @@ const pool = mysql.createPool(dbConfig);
 // Função para criar a tabela se ela não existir
 const createTables = async () => {
     try {
+        // SQL ATUALIZADO: Adicionadas colunas para IPI e ISS.
         await pool.query(`
             CREATE TABLE IF NOT EXISTS pgdas_reports (
                 id INT AUTO_INCREMENT PRIMARY KEY,
@@ -25,6 +26,15 @@ const createTables = async () => {
                 receitaBrutaAno DECIMAL(15, 2),
                 receitasMercadoInterno JSON,
                 receitasMercadoExterno JSON,
+                valor_total_debito DECIMAL(15, 2),
+                irpj DECIMAL(10, 2),
+                csll DECIMAL(10, 2),
+                cofins DECIMAL(10, 2),
+                pis_pasep DECIMAL(10, 2),
+                inss_cpp DECIMAL(10, 2),
+                icms DECIMAL(10, 2),
+                ipi DECIMAL(10, 2),
+                iss DECIMAL(10, 2),
                 createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 UNIQUE KEY unique_cnpj_periodo (cnpj, periodoApuracao)
             )
